@@ -109,6 +109,13 @@
 				vmmc-supply = <&vcc_mmc1_reg>;
 				vqmmc-supply = <&vcc_3v3_reg>;
 				status = "okay";
+				wilc_sdio@0{
+					compatible = "atmel,wilc_sdio";
+					gpio_reset = <&pioB 28 0>;
+					gpio_chip_en = <&pioC 30 0>;
+					gpio_irq = <&pioC 27 0>;
+					status = "okay";
+				};
 				slot@0 {
 					reg = <0>;
 					bus-width = <4>;
@@ -132,6 +139,9 @@
 					compatible = "atmel,wilc_spi";
 					spi-max-frequency = <48000000>;
 					reg = <0>;
+					gpio_reset = <&pioB 28 0>;
+					gpio_chip_en = <&pioC 30 0>;
+					gpio_irq = <&pioC 27 0>;
 					status = "okay";
 				};
 			};
