@@ -2080,7 +2080,6 @@ static int change_virtual_intf(struct wiphy *wiphy, struct net_device *dev,
 	net_device_2 = wilc_get_if_netdev(wl, WLAN_IFC);
 	priv_1 = wdev_priv(net_device_1->ieee80211_ptr);
 	priv_2 = wdev_priv(net_device_2->ieee80211_ptr);
-	// TODO: AA
 	vif_1 = netdev_priv(net_device_1);
 	vif_2 = netdev_priv(net_device_2);
 	
