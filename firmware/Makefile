@@ -134,6 +134,9 @@ fw-shipped-$(CONFIG_USB_SERIAL_KEYSPAN_PDA) += keyspan_pda/keyspan_pda.fw
 fw-shipped-$(CONFIG_USB_SERIAL_XIRCOM) += keyspan_pda/xircom_pgs.fw
 fw-shipped-$(CONFIG_USB_VICAM) += vicam/firmware.fw
 fw-shipped-$(CONFIG_VIDEO_CPIA2) += cpia2/stv0672_vp4.bin
+fw-shipped-$(CONFIG_WILC) += mchp/wilc1000_wifi_firmware.bin
+fw-shipped-$(CONFIG_WILC) += mchp/wilc3000_wifi_firmware.bin
+fw-shipped-$(CONFIG_WILC) += mchp/wilc3000_ble_firmware.bin
 fw-shipped-$(CONFIG_YAM) += yam/1200.bin yam/9600.bin
 
 fw-shipped-all := $(fw-shipped-y) $(fw-shipped-m) $(fw-shipped-)
