@@ -1403,28 +1403,18 @@ static int set_wiphy_params(struct wiphy *wiphy, u32 changed)
 	PRINT_INFO(vif->ndev, CFG80211_DBG, "Setting Wiphy params\n");
 
 	if (changed & WIPHY_PARAM_RETRY_SHORT) {
-		if (wiphy->retry_short > 0 && wiphy->retry_short < 256) {
-			PRINT_INFO(vif->ndev, CFG80211_DBG,
-				   "Setting WIPHY_PARAM_RETRY_SHORT %d\n",
-				   wiphy->retry_short);
-			cfg_param_val.flag  |= RETRY_SHORT;
-			cfg_param_val.short_retry_limit = wiphy->retry_short;
-		} else {
-			PRINT_ER(vif->ndev, "Short retry limit out of range\n");
-			return -EINVAL;
-		}
+		PRINT_INFO(vif->ndev, CFG80211_DBG,
+			   "Setting WIPHY_PARAM_RETRY_SHORT %d\n",
+			   wiphy->retry_short);
+		cfg_param_val.flag  |= RETRY_SHORT;
+		cfg_param_val.short_retry_limit = wiphy->retry_short;
 	}
 	if (changed & WIPHY_PARAM_RETRY_LONG) {
-		if (wiphy->retry_long > 0 && wiphy->retry_long < 256) {
-			PRINT_INFO(vif->ndev, CFG80211_DBG,
-				   "Setting WIPHY_PARAM_RETRY_LONG %d\n",
-				   wiphy->retry_long);
-			cfg_param_val.flag |= RETRY_LONG;
-			cfg_param_val.long_retry_limit = wiphy->retry_long;
-		} else {
-			PRINT_ER(vif->ndev, "Long retry limit out of range\n");
-			return -EINVAL;
-		}
+		PRINT_INFO(vif->ndev, CFG80211_DBG,
+			   "Setting WIPHY_PARAM_RETRY_LONG %d\n",
+			   wiphy->retry_long);
+		cfg_param_val.flag |= RETRY_LONG;
+		cfg_param_val.long_retry_limit = wiphy->retry_long;
 	}
 	if (changed & WIPHY_PARAM_FRAG_THRESHOLD) {
 		if (wiphy->frag_threshold > 255 &&
