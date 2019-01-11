@@ -12,10 +12,6 @@
 #include <linux/etherdevice.h>
 #include <linux/interrupt.h>
 #include <net/ip.h>
-#include <linux/mmc/sdio_func.h>
-#include <linux/mmc/host.h>
-#include <linux/mmc/card.h>
-#include <linux/pm_runtime.h>
 #include <linux/module.h>
 #ifdef DISABLE_PWRSAVE_AND_SCAN_DURING_IP
 #include <linux/inetdevice.h>
@@ -724,10 +720,6 @@ static int linux_wlan_start_firmware(struct net_device *dev)
 	struct wilc_vif *vif = netdev_priv(dev);
 	struct wilc *wilc = vif->wilc;
 	int ret = 0;
-	struct sdio_func *func;
-
-	func = dev_to_sdio_func(wilc->dev);
-	pm_runtime_get_sync(mmc_dev(func->card->host));
 
 	PRINT_INFO(vif->ndev, INIT_DBG, "Starting Firmware ...\n");
 
