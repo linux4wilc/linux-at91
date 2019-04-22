@@ -22,3 +22,14 @@ config PWRSEQ_SIMPLE
 
 	  This driver can also be built as a module. If so, the module
 	  will be called pwrseq_simple.
+
+config PWRSEQ_WILC
+	tristate "HW reset support for Microchip WILC BT + WiFi devices"
+	depends on OF
+	help
+	  This selects hardware reset support for Microchip WILC BT + WiFi
+	  devices. By default this option is set to n.
+
+	  This driver can also be built as a module. If so, the module
+	  will be called pwrseq_wilc.
+
