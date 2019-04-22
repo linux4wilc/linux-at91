@@ -67,6 +67,15 @@
 		};
 	};
 
+	wifi_pwrseq: wifi_pwrseq {
+		compatible = "mmc-pwrseq-wilc";
+		reset-gpios = <&pioB 28 GPIO_ACTIVE_HIGH>;
+		powerdown-gpios = <&pioC 30 GPIO_ACTIVE_HIGH>;
+		pinctrl-0 = <&pinctrl_wilc_pwrseq_default>;
+		pinctrl-names = "default";
+		status = "okay";
+	};
+
 	ahb {
 		apb {
 			uart0: serial@f8004000 {
@@ -105,14 +114,13 @@
 			mmc1: mmc@fc000000 {
 				pinctrl-names = "default";
 				pinctrl-0 = <&pinctrl_mmc1_clk_cmd_dat0 &pinctrl_mmc1_dat1_3>;
+				mmc-pwrseq = <&wifi_pwrseq>;
 				non-removable;
 				vmmc-supply = <&vcc_mmc1_reg>;
 				vqmmc-supply = <&vcc_3v3_reg>;
 				status = "okay";
 				wilc_sdio@0{
 					compatible = "microchip,wilc1000", "microchip,wilc3000", "atmel,wilc_sdio";
-					reset-gpios = <&pioB 28 0>;
-					chip_en-gpios = <&pioC 30 0>;
 					irq-gpios = <&pioC 27 0>;
 					status = "okay";
 					reg = <0>;
@@ -179,6 +187,14 @@
 					pinctrl_macb0_phy_irq: macb0_phy_irq_0 {
 						atmel,pins =
 							<AT91_PIOE 1 AT91_PERIPH_GPIO AT91_PINCTRL_PULL_UP_DEGLITCH>;
+					};
+				};
+
+				wilc_pwrseq {
+					pinctrl_wilc_pwrseq_default: pinctrl_wilc_pwrseq {
+						atmel,pins =
+							<AT91_PIOB 28 AT91_PERIPH_GPIO AT91_PINCTRL_PULL_DOWN
+							 AT91_PIOC 30 AT91_PERIPH_GPIO AT91_PINCTRL_PULL_DOWN>;
 					};
 				};
 			};
